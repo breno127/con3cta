@@ -1,0 +1,338 @@
+/* static/css/style.css */
+
+:root {
+    /* Paleta Clean Brutalism (LIGHT MODE Padrão) */
+    --bg-base: #faf9f6;
+    --bg-card: #ffffff;
+    --text-main: #111111;
+    --text-muted: #555555;
+
+    /* Destaques */
+    --con3cta-blue: #0055ff;
+    --accent-yellow: #ffde59;
+    --accent-green: #00e676;
+    --accent-red: #ff3b30;
+
+    /* Estrutura Dinâmica (Muda com o tema) */
+    --border-color: #111111;
+    --grid-color: #d1d5db;
+
+    --border-fina: 2px solid var(--border-color);
+    --shadow-solida: 4px 4px 0px var(--border-color);
+    --radius-md: 12px;
+    --radius-pill: 100px;
+    --transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] {
+    /* Paleta Clean Brutalism (DARK MODE) */
+    --bg-base: #0a0a0a;
+    --bg-card: #111111;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+
+    --con3cta-blue: #3b82f6;
+    /* Azul um tom mais claro para vibrar no escuro */
+    --accent-yellow: #eab308;
+
+    /* Inverte a estrutura */
+    --border-color: #ffffff;
+    /* Bordas e sombras sólidas ficam brancas */
+    --grid-color: #222222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-top: 80px;
+    background-image: radial-gradient(var(--grid-color) 1px, transparent 1px);
+    background-size: 32px 32px;
+    transition: var(--transition);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* --- Navegação --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--bg-card);
+    border-bottom: var(--border-fina);
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--con3cta-blue);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Botões Arquitetados */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: var(--border-fina);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-solida);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--border-color);
+}
+
+.btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px var(--border-color);
+}
+
+.btn-blue {
+    background-color: var(--con3cta-blue);
+    color: #fff;
+}
+
+.btn-icon {
+    padding: 10px;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    padding: 100px 0 60px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: var(--accent-yellow);
+    border: var(--border-fina);
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    box-shadow: 2px 2px 0px var(--border-color);
+    color: #111;
+    /* Texto sempre escuro dentro do amarelo */
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.text-red {
+    color: var(--accent-red);
+}
+
+.text-green {
+    color: var(--accent-green);
+}
+
+/* --- Bento Grid --- */
+.bento-section {
+    padding: 80px 0;
+    border-top: var(--border-fina);
+    background-color: var(--bg-card);
+    transition: var(--transition);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.bento-card {
+    background-color: var(--bg-base);
+    border: var(--border-fina);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-solida);
+    transition: var(--transition);
+}
+
+.bento-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--border-color);
+}
+
+.bento-card.full-width {
+    grid-column: span 2;
+}
+
+.icon-box {
+    width: 56px;
+    height: 56px;
+    background-color: var(--accent-yellow);
+    border: var(--border-fina);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 2px 2px 0px var(--border-color);
+    color: #111;
+    /* Ícone escuro dentro do amarelo */
+}
+
+.icon-box svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2.5px;
+}
+
+.icon-box.blue {
+    background-color: var(--con3cta-blue);
+    color: #fff;
+}
+
+/* Override pro azul */
+
+.bento-card h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.bento-card p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Contêiner Ajustado para Gráficos */
+.chart-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 250px;
+    margin-top: 32px;
+    background-color: var(--bg-card);
+    border: var(--border-fina);
+    border-radius: 8px;
+    padding: 16px;
+    transition: var(--transition);
+}
+
+/* --- Footer CTA --- */
+.footer-cta {
+    padding: 100px 0;
+    background-color: var(--bg-card);
+    /* Agora ele respeita o fundo claro/escuro */
+    border-top: var(--border-fina);
+    text-align: center;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.footer-cta h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+}
+
+.footer-cta p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 40px;
+    font-size: 1.1rem;
+}
+
+.footer-cta .btn {
+    background-color: var(--con3cta-blue);
+    color: #ffffff;
+    border: var(--border-fina);
+}
+
+.footer-cta .btn:hover {
+    background-color: var(--accent-yellow);
+    color: #111111;
+    /* Texto escuro no amarelo */
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .mockup-ui {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-card.full-width {
+        grid-column: span 1;
+    }
+}
