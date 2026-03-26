@@ -39,7 +39,7 @@
             </div>
 
             <div class="bento-grid">
-                <div class="bento-card">
+                <div class="bento-card card-animate-left">
                     <h3>Onde as empresas quebram</h3>
                     <p>O maior erro do empreendedor é a desorganização financeira.</p>
                     <div class="chart-wrapper">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="bento-card">
+                <div class="bento-card card-animate-right">
                     <h3>O cliente não espera</h3>
                     <p>A chance de conversão despenca nos primeiros 30 minutos sem automação.</p>
                     <div class="chart-wrapper">
@@ -64,26 +64,49 @@
                 <h2>Estratégia de Intervenção</h2>
             </div>
 
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <div class="icon-box"><i data-lucide="trending-up"></i></div>
-                    <h3>Diagnóstico de Vendas</h3>
-                    <p>Mapeamos com precisão cirúrgica onde o seu dinheiro está vazando e ativamos alavancas de venda imediata.</p>
-                </div>
-
-                <div class="bento-card">
-                    <div class="icon-box"><i data-lucide="wallet"></i></div>
-                    <h3>Controle Financeiro</h3>
-                    <p>Organizamos o seu fluxo de caixa para que o aumento do faturamento vire lucro líquido no fim do mês.</p>
-                </div>
-
-                <div class="bento-card full-width" style="display: flex; flex-direction: row; align-items: center; gap: 40px;">
-                    <div style="flex: 1;">
-                        <div class="icon-box blue"><i data-lucide="zap"></i></div>
-                        <h3>Automação & Digital</h3>
-                        <p>Nossos bots vendem por você no WhatsApp, enquanto o design profissional atrai o cliente que valoriza o produto.</p>
-                        <a href="/agendar" style="display: inline-block; margin-top: 16px; color: var(--text-main); font-weight: 700;">Integrar meu sistema ➔</a>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    
+                    <div class="carousel-slide">
+                        <div class="bento-card" style="height: 100%;">
+                            <div class="icon-box"><i data-lucide="trending-up"></i></div>
+                            <h3>Diagnóstico de Vendas</h3>
+                            <p>Mapeamos com precisão cirúrgica onde o seu dinheiro está vazando e ativamos alavancas de venda imediata.</p>
+                        </div>
                     </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="bento-card" style="height: 100%;">
+                            <div class="icon-box"><i data-lucide="wallet"></i></div>
+                            <h3>Controle Financeiro</h3>
+                            <p>Organizamos o seu fluxo de caixa para que o aumento do faturamento vire lucro líquido no fim do mês.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="bento-card" style="height: 100%;">
+                            <div class="icon-box blue"><i data-lucide="zap"></i></div>
+                            <h3>Automação & Digital</h3>
+                            <p>Nossos bots vendem por você no WhatsApp, enquanto o design profissional atrai o cliente que valoriza o produto.</p>
+                            <a href="/agendar" style="display: inline-block; margin-top: 16px; color: var(--text-main); font-weight: 700;">Integrar meu sistema ➔</a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="bento-card" style="height: 100%;">
+                            <div class="icon-box" style="background-color: var(--accent-green);"><i data-lucide="target"></i></div>
+                            <h3>Planeamento Estratégico</h3>
+                            <p>Definimos metas claras e um plano de ação tático para escalar o seu negócio de forma sustentável nos próximos meses.</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="carousel-dots" id="carouselDots">
+                    <button class="dot active" data-index="0"></button>
+                    <button class="dot" data-index="1"></button>
+                    <button class="dot" data-index="2"></button>
+                    <button class="dot" data-index="3"></button>
                 </div>
             </div>
         </div>
