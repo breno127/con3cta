@@ -20,7 +20,7 @@ def home():
 def agendar_whatsapp():
     """Link pro WhatsApp com a mensagem padrão de diagnóstico."""
     mensagem = "Olá Con3cta! Simulei meu lucro no site e gostaria de agendar um diagnóstico gratuito."
-    url = f"https://api.whatsapp.com/send?phone={+5519991391820}&text={urllib.parse.quote(mensagem)}"
+    url = f"https://api.whatsapp.com/send?phone={}&text={urllib.parse.quote(mensagem)}"
     return redirect(url)
 
 # NOVA ROTA DE API: Para Salvar a Preferência do Tema
