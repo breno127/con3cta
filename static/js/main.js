@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderCharts();
 
-    // Atraso intencional no redimensionamento para os gráficos não enlouquecerem no telemóvel
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
@@ -96,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCharts();
     });
 
-    // --- Animações de Scroll ---
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -116,12 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // --- Carrossel Automático ---
+    // --- Carrossel Automático e Swipe (Mobile + PC) ---
     const track = document.getElementById('carouselTrack');
     if (track) {
         const slides = Array.from(track.children);
         const dots = document.querySelectorAll('.carousel-dots .dot');
         let currentSlideIndex = 0;
+        let carouselInterval;
+        
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
 
         function updateCarousel(index) {
             track.style.transform = `translateX(-${index * 100}%)`;
@@ -129,16 +132,76 @@ document.addEventListener('DOMContentLoaded', () => {
             if (dots[index]) dots[index].classList.add('active');
         }
 
-        setInterval(() => {
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            updateCarousel(currentSlideIndex);
-        }, 4000);
+        function startInterval() {
+            carouselInterval = setInterval(() => {
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                updateCarousel(currentSlideIndex);
+            }, 4000);
+        }
+
+        function resetInterval() {
+            clearInterval(carouselInterval);
+            startInterval();
+        }
+
+        startInterval();
 
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 currentSlideIndex = index;
                 updateCarousel(currentSlideIndex);
+                resetInterval();
             });
         });
+
+        // Função de Início do Arrastar (Mouse/Touch)
+        function dragStart(e) {
+            isDragging = true;
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            clearInterval(carouselInterval);
+        }
+
+        // Função de Movimento do Arrastar (Mouse/Touch)
+        function dragMove(e) {
+            if (!isDragging) return;
+            currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        }
+
+        // Função de Fim do Arrastar (Mouse/Touch)
+        function dragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            if (!startX || !currentX) {
+                resetInterval();
+                return;
+            }
+            
+            let diffX = startX - currentX;
+
+            if (Math.abs(diffX) > 40) {
+                if (diffX > 0) {
+                    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                } else {
+                    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+                }
+                updateCarousel(currentSlideIndex);
+            }
+
+            startX = 0;
+            currentX = 0;
+            resetInterval();
+        }
+
+        // Eventos Touch (Telemóvel)
+        track.addEventListener('touchstart', dragStart, { passive: true });
+        track.addEventListener('touchmove', dragMove, { passive: true });
+        track.addEventListener('touchend', dragEnd);
+
+        // Eventos Mouse (PC)
+        track.addEventListener('mousedown', dragStart);
+        track.addEventListener('mousemove', dragMove);
+        track.addEventListener('mouseup', dragEnd);
+        track.addEventListener('mouseleave', dragEnd); 
     }
 });
